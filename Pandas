@@ -1,0 +1,39 @@
+# Step 1: Import necessary libraries
+import pandas as pd
+
+# Step 2: Load the dataset
+df = pd.read_csv('your_dataset.csv')
+
+# Step 3: Explore the data
+print("First 5 rows of the dataset:")
+print(df.head())  # Display the first 5 rows of the dataset
+
+print("\nDataset Information:")
+print(df.info())  # Information about the dataset (columns, data types, etc.)
+
+print("\nStatistical Summary:")
+print(df.describe())  # Summary statistics for numerical columns
+
+# Step 4: Data Manipulation Examples
+# Select a specific column
+print("\nValues from a specific column:")
+print(df['ColumnName'])  # Replace 'ColumnName' with the actual column name
+
+# Filter rows based on a condition (e.g., filter rows where a column value is greater than 50)
+filtered_data = df[df['ColumnName'] > 50]  # Replace 'ColumnName' and 50 as appropriate
+print("\nFiltered Data (where ColumnName > 50):")
+print(filtered_data)
+
+# Add a new column (e.g., double the values of an existing column)
+df['NewColumn'] = df['ExistingColumn'] * 2  # Replace 'ExistingColumn' with the column to manipulate
+print("\nData with new column added:")
+print(df.head())
+
+# Group data by a column and calculate the mean
+grouped_data = df.groupby('GroupColumnName').mean()  # Replace 'GroupColumnName' with a column to group by
+print("\nGrouped Data (mean values):")
+print(grouped_data)
+
+# Step 5: Save the manipulated data to a new CSV file
+df.to_csv('modified_dataset.csv', index=False)
+print("\nModified dataset saved as 'modified_dataset.csv'")
