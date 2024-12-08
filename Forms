@@ -1,0 +1,18 @@
+from django import forms
+
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=100)
+    email = forms.EmailField()
+    message = forms.CharField(widget=forms.Textarea)
+from django.shortcuts import render
+from .forms import ContactForm
+
+def contact(request):
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # Handle form data here
+            return HttpResponse("Thank you for your message!")
+    else:
+        form = ContactForm()
+    return render(request, 'contact.html', {'form': form})
